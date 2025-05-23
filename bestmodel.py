@@ -44,10 +44,3 @@ else:
     confidence = np.max(prediction) * 100
     st.info(f"Model confidence: {confidence:.2f}%")
 
-pip install --upgrade pip
-pip install pygments mdurl markdown-it-py rich
-streamlit run main.py
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install streamlit
-
