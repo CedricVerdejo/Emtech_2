@@ -23,7 +23,7 @@ def import_and_predict(image_data, model):
     image_data = image_data.convert('RGB')  # Ensure 3 channels
     image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)
     img_array = np.asarray(image).astype(np.float32) / 255.0
-    img_reshape = np.expand_dims(img_array, axis=0)  # (1, 128, 128, 3)
+    img_reshape = np.expand_dims(img_array, axis=0)  # (1, 64, 64, 3)
     prediction = model.predict(img_reshape)
     return prediction
 
