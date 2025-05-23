@@ -6,8 +6,15 @@ from PIL import Image, ImageOps
 # Caches the model to prevent reloading on every rerun
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('best_weather_mlp_model.h5')
-    return model
+    file_id = "YOUR_FILE_ID_HERE"
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    output_path = "best_weather_mlp_model.h5"
+
+    if not os.path.exists(output_path):
+        with open(output_path, "wb") as f:
+            f.write(requests.get(url).content)
+
+    return tf.keras.models.load_model(output_path)
 
 model = load_model()
 
